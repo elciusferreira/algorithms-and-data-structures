@@ -1,2 +1,8 @@
-# algorithms-and-data-structures
-Algorithms and data structures in Python
+# Algorithms and data structures in Python
+
+#### To run the Sortings.py script:
+```
+$ make run
+```
+
+
