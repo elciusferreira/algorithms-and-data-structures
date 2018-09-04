@@ -1,5 +1,6 @@
 from InsertionSort import insertion_sort
 from SelectionSort import selection_sort
+from MergeSort import merge_sort
 import time
 
 def process_inputfile():
@@ -16,8 +17,8 @@ def process_inputfile():
 	return unsorted_list, filename
 
 
-def generate_outputfile(numbers, filename):
-	path = "outputs/insertion_sort/" + filename + "out"
+def generate_outputfile(numbers, algorithm_name, filename):
+	path = "outputs/" + algorithm_name + "/" + filename + "out"
 	output_file = open(path, "w")
 
 	for num in numbers:
@@ -31,29 +32,67 @@ if __name__ == '__main__':
 
 	while True:
 		print("\n\n      S O R T I N G    A L G O R I T H M S\n")
-		print(">> Type 1 or 2 to select the sorting algorithm and 3 to exit the program: \n")
+		print(">> Type a number to select the sorting algorithm or to exit the program: \n")
 		print("[1] - Insertion Sort")
 		print("[2] - Selection Sort")
-		print("[3] - Exit")
+		print("[3] - Merge Sort")
+		print("[4] - Quick Sort")
+		print("[5] - Exit")
 		option = input("Option: ")
 
 		if option == '1':
-			unsorted_list, filename = process_inputfile()
+			numbers, filename = process_inputfile()
+
 			print("\nInsertion Sort running...")
-			sorted_list = insertion_sort(unsorted_list)
-			generate_outputfile(sorted_list, filename.split("in")[0])
+			start_time = time.time()   # get initial time
+			numbers = insertion_sort(numbers)
+			print("\n> Insertion Sort finished with sorting time: %s seconds." % "{0:.3f}".format(time.time() - start_time))
+
+			generate_outputfile(numbers, "insertion_sort", filename.split("in")[0])
 			print("---------------------------------------------------------------")
+
 			time.sleep(2)
 
 		elif option == '2':
-			unsorted_list, filename = process_inputfile()
+			numbers, filename = process_inputfile()
+
 			print("\nSelection Sort running...")
-			sorted_list = selection_sort(unsorted_list)
-			generate_outputfile(sorted_list, filename.split("in")[0])
+			start_time = time.time()   # get initial time
+			numbers = selection_sort(numbers)
+			print("\n> Selection Sort finished with sorting time: %s seconds." % "{0:.3f}".format(time.time() - start_time))
+
+			generate_outputfile(numbers, "selection_sort", filename.split("in")[0])
 			print("---------------------------------------------------------------")
+
 			time.sleep(2)
 
-		elif option =='3':
+		elif option == '3':
+			numbers, filename = process_inputfile()
+
+			print("\nMerge Sort running...")
+			start_time = time.time()   # get initial time
+			merge_sort(numbers)
+			print("\n> Merge Sort finished with sorting time: %s seconds." % "{0:.3f}".format(time.time() - start_time))
+
+			generate_outputfile(numbers, "merge_sort", filename.split("in")[0])
+			print("---------------------------------------------------------------")
+
+			time.sleep(2)
+
+		elif option == '4':
+			numbers, filename = process_inputfile()
+
+			print("\nQuick Sort running...")
+			start_time = time.time()   # get initial time
+			merge_sort(numbers)
+			print("\n> Quick Sort finished with sorting time: %s seconds." % "{0:.3f}".format(time.time() - start_time))
+
+			generate_outputfile(numbers, "quick_sort", filename.split("in")[0])
+			print("---------------------------------------------------------------")
+
+			time.sleep(2)
+
+		elif option =='5':
 			print("\nExiting...")
 			break
 	
