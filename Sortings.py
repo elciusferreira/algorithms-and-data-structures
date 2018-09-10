@@ -1,7 +1,9 @@
 from InsertionSort import insertion_sort
 from SelectionSort import selection_sort
 from MergeSort import merge_sort
+from HeapSort import heap_sort
 import time
+
 
 def process_inputfile():
 	filename = input("Type the input filename (example: 'num.1000.1.in'): ")
@@ -37,10 +39,11 @@ if __name__ == '__main__':
 		print("[2] - Selection Sort")
 		print("[3] - Merge Sort")
 		print("[4] - Quick Sort")
-		print("[5] - Exit")
+		print("[5] - Heap Sort")
+		print("[6] - Exit")
 		option = input("Option: ")
 
-		if option == '1':
+		if option == '1':   # Insertion Sort
 			numbers, filename = process_inputfile()
 
 			print("\nInsertion Sort running...")
@@ -53,7 +56,7 @@ if __name__ == '__main__':
 
 			time.sleep(2)
 
-		elif option == '2':
+		elif option == '2':   # Selection Sort
 			numbers, filename = process_inputfile()
 
 			print("\nSelection Sort running...")
@@ -66,7 +69,7 @@ if __name__ == '__main__':
 
 			time.sleep(2)
 
-		elif option == '3':
+		elif option == '3':   # Merge Sort
 			numbers, filename = process_inputfile()
 
 			print("\nMerge Sort running...")
@@ -79,7 +82,7 @@ if __name__ == '__main__':
 
 			time.sleep(2)
 
-		elif option == '4':
+		elif option == '4':   # Quick Sort
 			numbers, filename = process_inputfile()
 
 			print("\nQuick Sort running...")
@@ -92,7 +95,20 @@ if __name__ == '__main__':
 
 			time.sleep(2)
 
-		elif option =='5':
+		elif option == '5':   # Heap Sort
+			numbers, filename = process_inputfile()
+
+			print("\nHeap Sort running...")
+			start_time = time.time()   # get initial time
+			merge_sort(numbers)
+			print("\n> Heap Sort finished with sorting time: %s seconds." % "{0:.3f}".format(time.time() - start_time))
+
+			generate_outputfile(numbers, "heap_sort", filename.split("in")[0])
+			print("---------------------------------------------------------------")
+
+			time.sleep(2)
+
+		elif option =='6':   # Exit
 			print("\nExiting...")
 			break
 	
