@@ -5,6 +5,7 @@ from HeapSort import heap_sort
 from KruskalMST import KruskalGraph
 from PrimMST import PrimGraph
 from DijkstraMST import DijkstraGraph
+from Knapsack import knapsack
 import time
 
 
@@ -26,7 +27,6 @@ def process_MST_inputfile():
 	filename = input("Type the input filename (example: 'kru_pri_dij10.txt'): ")
 
 	path = "inputs/" + filename
-	unsorted_list = []
 	input_file = open(path, "r")
 
 	i = 0
@@ -56,6 +56,28 @@ def process_MST_inputfile():
 
 	return vertices, adj_matrix
 
+def process_knapsack_input():
+	filename = input("Type the knapsack input filename (example: 'knapsack01.txt'): ")
+
+	path = "inputs/" + filename
+	input_file = open(path, "r")
+
+	first_line = True
+	values = []
+	weights = []
+	for line in input_file:
+		if first_line == True:
+			n, W = line[:-1].split(' ')   # get items quantity and knapsack weigth
+			first_line = False
+
+		else:
+			w, v = line[:-1].split(' ')   # get item weigth and value
+			values.append(int(v))
+			weights.append(int(w))
+
+	return int(n), int(W), values, weights
+
+
 def generate_outputfile(numbers, algorithm_name, filename):
 	path = "outputs/" + algorithm_name + "/" + filename + "out"
 	output_file = open(path, "w")
@@ -80,7 +102,8 @@ if __name__ == '__main__':
 		print("[6] - KruskalMST")
 		print("[7] - PrimMST")
 		print("[8] - DijkstraMST")
-		print("[9] - Exit")
+		print("[9] - 0/1 Greedy Knapsack Problem")
+		print("[10]- Exit")
 		option = input("Option: ")
 
 		if option == '1':   # Insertion Sort
@@ -148,7 +171,7 @@ if __name__ == '__main__':
 
 			time.sleep(2)
 
-		elif option == '6':
+		elif option == '6':   # Kruskal MST
 			vertices, adj_matrix = process_MST_inputfile()
 			g = KruskalGraph(vertices) 
 
@@ -159,7 +182,7 @@ if __name__ == '__main__':
 
 			g.kruskalMST() 
 
-		elif option == '7':
+		elif option == '7':   # Prim MST
 			vertices, adj_matrix = process_MST_inputfile()
 			g = PrimGraph(vertices) 
 
@@ -169,7 +192,7 @@ if __name__ == '__main__':
 
 			time.sleep(2)
 
-		elif option == '8':
+		elif option == '8':   # Dijkstra MST
 			vertices, adj_matrix = process_MST_inputfile()
 			g = DijkstraGraph(vertices) 
 
@@ -179,7 +202,18 @@ if __name__ == '__main__':
 
 			time.sleep(2) 
 
-		elif option =='9':   # Exit
+		elif option =='9':   # Greedy 0/1 Knapsack
+			n, W, val, wt = process_knapsack_input()
+
+			start_time = time.time()   # get initial time
+
+			knapsack(n, W, val, wt)	
+
+			print("\n> Greedy 0/1 Knapsack algorithm finished in: %s seconds." % "{0:.3f}".format(time.time() - start_time))
+
+			time.sleep(2)
+
+		elif option =='10':   # Exit
 			print("\nExiting...")
 			break
 	

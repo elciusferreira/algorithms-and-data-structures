@@ -1,2 +1,2 @@
 run:
-	$ python3 Sortings.py
+	$ python3 Algorithms.py

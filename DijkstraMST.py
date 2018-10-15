@@ -17,7 +17,7 @@ class DijkstraGraph():
 	# a support function to find the vertex with 
 	# minimum distance value 
 	def minDistance(self, dist, sptSet): 
-		min = sys.maxsize # initilaize min value 
+		min = sys.maxsize   # initilaize min value 
 
 		for v in range(self.V): 
 			if dist[v] < min and sptSet[v] == False: 
@@ -28,14 +28,14 @@ class DijkstraGraph():
 
 
 	def dijkstraMST(self, src): 
-		dist = [sys.maxsize] * self.V  # initiate dists with large value
+		dist = [sys.maxsize] * self.V   # initiate dists with large value
 		dist[src] = 0
-		sptSet = [False] * self.V # control vertices processed and not processed yet
+		sptSet = [False] * self.V   # control vertices processed and not processed yet
 
 		for cout in range(self.V): 
 			# pick the minimum distance vertex from the set of vertices not yet processed
 			u = self.minDistance(dist, sptSet) 
-			sptSet[u] = True # Put the minimum distance vertex inside
+			sptSet[u] = True   # Put the minimum distance vertex inside
 
 			# update dist value of the adjacent vertices 
 			# of the picked vertex only if the current 

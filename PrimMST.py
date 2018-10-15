@@ -29,11 +29,11 @@ class PrimGraph():
 		return min_index 
 
 	def primMST(self): 
-		key = [sys.maxsize] * self.V # initiate keys with large value
-		parent = [None] * self.V # store constructed MST 
-		key[0] = 0 # make key 0 so that this vertex is picked as first vertex 
-		mstSet = [False] * self.V # control vertices processed and not processed yet
-		parent[0] = -1 # First node is always the root 
+		key = [sys.maxsize] * self.V   # initiate keys with large value
+		parent = [None] * self.V   # store constructed MST 
+		key[0] = 0   # make key 0 so that this vertex is picked as first vertex 
+		mstSet = [False] * self.V   # control vertices processed and not processed yet
+		parent[0] = -1   # first node is always the root 
 
 		for cout in range(self.V): 
 			# pick the minimum distance vertex from the set of vertices not yet processed

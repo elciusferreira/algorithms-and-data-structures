@@ -38,10 +38,10 @@ class KruskalGraph:
 
 	def kruskalMST(self): 
 
-		result =[] # store the resultant MST 
+		result =[]   # store the resultant MST 
 
-		i = 0 # An index variable, used for sorted edges 
-		e = 0 # An index variable, used for result[] 
+		i = 0   # an index variable, used for sorted edges 
+		e = 0   # an index variable, used for result[] 
 
 		# sort all the edges in non-decreasing order of their weight
 		self.graph = sorted(self.graph,key=lambda item: item[2]) 
@@ -55,7 +55,7 @@ class KruskalGraph:
 			rank.append(0) 
 	
 		# number of edges to be taken is equal to V-1 
-		while e < self.V -1 : 
+		while e < self.V - 1 : 
 
 			# pick the smallest edge and increment 
 			# the index for next iteration 
